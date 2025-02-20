@@ -8,6 +8,7 @@ RAW_SRCS =	main \
 			Bureaucrat \
 			AForm \
 			ShrubberyCreationForm \
+			RobotomyRequestForm \
 
 SRC_DIR = ./
 SRCS = $(RAW_SRCS:%=$(SRC_DIR)/%.cpp)

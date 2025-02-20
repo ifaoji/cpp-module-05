@@ -1,7 +1,9 @@
 #include <cassert>
+#include <cstdlib>
 #include <iostream>
 
 #include "Bureaucrat.hpp"
+#include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 
 void PrintHeader(const std::string &header) {
@@ -12,6 +14,8 @@ void PrintHeader(const std::string &header) {
 }
 
 int main() {
+  srand(time(NULL));
+
   {
     PrintHeader("Shrubbery");
 
@@ -52,12 +56,58 @@ int main() {
       std::cout << "Catched grade too low exception" << std::endl;
     }
   }
-    foo.beSigned(hubert);
 
+  {
+    PrintHeader("Robotomy");
+
+    RobotomyRequestForm foo("Hubert");
+
+    Bureaucrat signer("Signer", 72);
+    foo.beSigned(signer);
+
+    Bureaucrat executor("Executor", 45);
+    foo.execute(executor);
+  }
+
+  {
+    PrintHeader("Robotomy Not Signed");
+
+    RobotomyRequestForm foo("Hubert");
+
+    Bureaucrat executor("Executor", 45);
     try {
-      foo.execute(hubert);
+      foo.execute(executor);
+    } catch (const AForm::NotSignedException &) {
+      std::cout << "Catched not signed exception" << std::endl;
+    }
+  }
+
+  {
+    PrintHeader("Robotomy Execute Grade Too Low");
+
+    RobotomyRequestForm foo("Hubert");
+
+    Bureaucrat signer("Signer", 72);
+    foo.beSigned(signer);
+
+    Bureaucrat executor("Executor", 46);
+    try {
+      foo.execute(executor);
     } catch (const AForm::GradeTooLowException &) {
       std::cout << "Catched grade too low exception" << std::endl;
+    }
+  }
+
+  {
+    PrintHeader("Robotomization Is Random");
+
+    Bureaucrat hubert("Hubert", 1);
+    RobotomyRequestForm foo("Herbert");
+
+    foo.beSigned(hubert);
+
+    for (int i = 0; i < 10; i++) {
+      foo.execute(hubert);
     }
   }
 }
