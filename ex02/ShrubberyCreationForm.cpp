@@ -5,11 +5,10 @@
 #include <fstream>
 
 ShrubberyCreationForm::ShrubberyCreationForm()
-    : AForm("default_shrubbery_form", 145, 137), target_("default_target") {}
+    : AForm("Shrubbery Creation Form", 145, 137), target_("default_target") {}
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string &name,
-                                             const std::string &target)
-    : AForm(name, 145, 137), target_(target) {}
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target)
+    : AForm("Shrubbery Creation Form", 145, 137), target_(target) {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other)
     : AForm(other), target_(other.target_) {}

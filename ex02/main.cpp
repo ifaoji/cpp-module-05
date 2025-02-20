@@ -19,7 +19,7 @@ int main() {
   {
     PrintHeader("Shrubbery");
 
-    ShrubberyCreationForm foo;
+    ShrubberyCreationForm foo("Herbert");
 
     Bureaucrat signer("Signer", 145);
     foo.beSigned(signer);
@@ -32,7 +32,7 @@ int main() {
     PrintHeader("Shrubbery Not Signed");
 
     Bureaucrat hubert("Hubert", 1);
-    ShrubberyCreationForm foo;
+    ShrubberyCreationForm foo("Herbert");
 
     try {
       foo.execute(hubert);
@@ -44,7 +44,7 @@ int main() {
   {
     PrintHeader("Shrubbery Execute Grade Too Low");
 
-    ShrubberyCreationForm foo;
+    ShrubberyCreationForm foo("Herbert");
 
     Bureaucrat signer("Signer", 145);
     foo.beSigned(signer);

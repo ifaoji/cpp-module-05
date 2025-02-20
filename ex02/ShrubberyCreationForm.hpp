@@ -68,8 +68,7 @@ CgggbU8OU qOp qOdoUOdcb     `.. %@@@o%::;             ,'%% \\-*%%%%%%%
 
 class ShrubberyCreationForm : public AForm {
 public:
-  ShrubberyCreationForm();
-  ShrubberyCreationForm(const std::string &name, const std::string &target);
+  ShrubberyCreationForm(const std::string &target);
   ShrubberyCreationForm(const ShrubberyCreationForm &other);
 
   ~ShrubberyCreationForm();
@@ -80,6 +79,7 @@ public:
       throw(AForm::GradeTooLowException, AForm::NotSignedException);
 
 private:
+  ShrubberyCreationForm();
   ShrubberyCreationForm &operator=(const ShrubberyCreationForm &rhs);
 
   const std::string target_;
