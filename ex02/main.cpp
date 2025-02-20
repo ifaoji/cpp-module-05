@@ -15,11 +15,13 @@ int main() {
   {
     PrintHeader("Shrubbery");
 
-    Bureaucrat hubert("Hubert", 1);
     ShrubberyCreationForm foo;
 
-    foo.beSigned(hubert);
-    foo.execute(hubert);
+    Bureaucrat signer("Signer", 145);
+    foo.beSigned(signer);
+
+    Bureaucrat executor("Executor", 137);
+    foo.execute(executor);
   }
 
   {
@@ -36,11 +38,20 @@ int main() {
   }
 
   {
-    PrintHeader("Shrubbery Grade Too Low");
+    PrintHeader("Shrubbery Execute Grade Too Low");
 
-    Bureaucrat hubert("Hubert", 145);
     ShrubberyCreationForm foo;
 
+    Bureaucrat signer("Signer", 145);
+    foo.beSigned(signer);
+
+    Bureaucrat executor("Executor", 138);
+    try {
+      foo.execute(executor);
+    } catch (const AForm::GradeTooLowException &) {
+      std::cout << "Catched grade too low exception" << std::endl;
+    }
+  }
     foo.beSigned(hubert);
 
     try {
