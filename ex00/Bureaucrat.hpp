@@ -19,15 +19,12 @@ class Bureaucrat {
         const char *what() const throw();
     };
 
-    Bureaucrat();
     Bureaucrat(const std::string &name,
                int grade) throw(Bureaucrat::GradeTooHighException,
                                 Bureaucrat::GradeTooLowException);
     Bureaucrat(const Bureaucrat &other);
 
     ~Bureaucrat();
-
-    Bureaucrat &operator=(const Bureaucrat &rhs);
 
     const std::string &getName() const;
     int                getGrade() const;
@@ -36,6 +33,9 @@ class Bureaucrat {
     void decrementGrade() throw(Bureaucrat::GradeTooLowException);
 
    private:
+    Bureaucrat();
+    Bureaucrat &operator=(const Bureaucrat &rhs);
+
     static const int kMaxGrade = 1;
     static const int kMinGrade = 150;
 
