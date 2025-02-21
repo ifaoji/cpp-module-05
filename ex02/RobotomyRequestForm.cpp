@@ -1,8 +1,8 @@
-#include "RobotomyRequestForm.hpp"
-
 #include <unistd.h>
 
 #include <cstdlib>
+
+#include "RobotomyRequestForm.hpp"
 
 RobotomyRequestForm::RobotomyRequestForm()
     : AForm("Robotomy Request Form", 72, 45), target_("default_target") {
@@ -19,12 +19,6 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &other)
 RobotomyRequestForm::~RobotomyRequestForm() {
 }
 
-bool randomBool() {
-    bool res = rand() < (RAND_MAX / 2);
-
-    return res;
-}
-
 RobotomyRequestForm &RobotomyRequestForm::operator=(
     const RobotomyRequestForm &rhs) {
     if (this == &rhs) return *this;
@@ -35,6 +29,12 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(
     // target_ = rhs.target_;
 
     return *this;
+}
+
+bool randomBool() {
+    bool res = rand() < (RAND_MAX / 2);
+
+    return res;
 }
 
 void RobotomyRequestForm::execute(const Bureaucrat &bureaucrat) const
