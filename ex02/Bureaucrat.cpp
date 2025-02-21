@@ -1,6 +1,5 @@
-#include "Bureaucrat.hpp"
-
 #include "AForm.hpp"
+#include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat() : name_("Default Bureaucrat"), grade_(kMinGrade) {
 }
@@ -71,6 +70,19 @@ void Bureaucrat::validateGrade(int grade) const
     if (grade > kMinGrade) {
         throw Bureaucrat::GradeTooLowException();
     }
+}
+
+void Bureaucrat::executeForm(const AForm &form) const {
+    try {
+        form.execute(*this);
+    } catch (std::exception &e) {
+        std::cout << name_ << " could not execute form " << form.getName()
+                  << " due to: " << e.what() << std::endl;
+
+        return;
+    }
+
+    std::cout << name_ << " executed " << form.getName() << std::endl;
 }
 
 void Bureaucrat::signForm(AForm &form) const {

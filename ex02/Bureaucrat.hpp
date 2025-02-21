@@ -34,6 +34,7 @@ class Bureaucrat {
     void incrementGrade() throw(Bureaucrat::GradeTooHighException);
     void decrementGrade() throw(Bureaucrat::GradeTooLowException);
 
+    void executeForm(const AForm &form) const;
     void signForm(AForm &form) const;
 
    private:

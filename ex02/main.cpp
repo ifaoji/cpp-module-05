@@ -151,4 +151,37 @@ int main() {
             std::cout << "Catched grade too low exception" << std::endl;
         }
     }
+
+    {
+        PrintHeader("Bureaucrat Direct Execution");
+
+        PresidentialPardonForm foo("Hubert");
+
+        Bureaucrat signer("Signer", 25);
+        foo.beSigned(signer);
+
+        Bureaucrat executor("Executor", 5);
+        executor.executeForm(foo);
+    }
+
+    {
+        PrintHeader("Bureaucrat Direct Execution Not Signed");
+
+        PresidentialPardonForm foo("Hubert");
+
+        Bureaucrat executor("Executor", 5);
+        executor.executeForm(foo);
+    }
+
+    {
+        PrintHeader("Bureaucrat Direct Execution Grade Too Low");
+
+        PresidentialPardonForm foo("Hubert");
+
+        Bureaucrat signer("Signer", 25);
+        foo.beSigned(signer);
+
+        Bureaucrat executor("Executor", 6);
+        executor.executeForm(foo);
+    }
 }
