@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "Bureaucrat.hpp"
+#include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 
@@ -107,6 +108,47 @@ int main() {
 
         for (int i = 0; i < 10; i++) {
             foo.execute(hubert);
+        }
+    }
+
+    {
+        PrintHeader("Presidential");
+
+        PresidentialPardonForm foo("Hubert");
+
+        Bureaucrat signer("Signer", 25);
+        foo.beSigned(signer);
+
+        Bureaucrat executor("Executor", 5);
+        foo.execute(executor);
+    }
+
+    {
+        PrintHeader("Presidential Not Signed");
+
+        PresidentialPardonForm foo("Hubert");
+
+        Bureaucrat executor("Executor", 5);
+        try {
+            foo.execute(executor);
+        } catch (const AForm::NotSignedException &) {
+            std::cout << "Catched not signed exception" << std::endl;
+        }
+    }
+
+    {
+        PrintHeader("Presidential Execute Grade Too Low");
+
+        PresidentialPardonForm foo("Hubert");
+
+        Bureaucrat signer("Signer", 25);
+        foo.beSigned(signer);
+
+        Bureaucrat executor("Executor", 6);
+        try {
+            foo.execute(executor);
+        } catch (const AForm::GradeTooLowException &) {
+            std::cout << "Catched grade too low exception" << std::endl;
         }
     }
 }
