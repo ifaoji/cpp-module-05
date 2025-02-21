@@ -38,56 +38,79 @@ _____|___________________________|_______)______________)
 #pragma once
 
 #ifndef ROBOTOMY_REQUEST_FORM_HPP_
-#define ROBOTOMY_REQUEST_FORM_HPP_
+#    define ROBOTOMY_REQUEST_FORM_HPP_
 
-#include "AForm.hpp"
+#    include "AForm.hpp"
 
-#define ASCII_DRILL                                                            \
-  "                      _________\n                     /~~~~~~~~~\\\n      " \
-  "              (===========) ______________\n                    |  ||  || " \
-  "  ||~~~~~~~~~~~~~~|\n                    |  ||  ||   ||        (@)   |\n  " \
-  "                  |  ||  ||   ||        //    |\n                    |  "   \
-  "||  ||   ||       //     |\n                    |  ||  ||   ||(@)===(o)   " \
-  "  |\n                    |  ||  ||   ||        \\\\    |\n                " \
-  "    |           ||         \\\\   |\n                    |~~~~~~~~~~~||   " \
-  "      (@)  |\n                    |___________||              |\n         " \
-  "           (___________)|              |\n                     "            \
-  "(_________) |    @--(o)    |\n                       |     |   (          " \
-  "    (\n                       |     |    \\      (o)     \\\n             " \
-  "          |     |     \\     /        \\\n                       |     |  " \
-  "    \\   @          \\\n                       |_____|       \\           " \
-  "   \\\n                       |_____|        \\              \\\n         " \
-  "              \\_____/         \\              \\\n                       " \
-  "  |/|            \\              \\\n                      )  |/|         " \
-  "    \\              \\\n                     (  ,|/|  / '         \\      " \
-  "        \\\n                      \\  |/| ( '           \\              "   \
-  "\\\n                _____  ) |/|' )         _   \\              \\\n      " \
-  "    |    |     |___|/|___________| |   \\              \\\n          "      \
-  "|====|     |_________________| |    \\              \\\n         =|   _|  " \
-  "    |_______________|  |     \\              \\\n             |           " \
-  "                |      \\              \\\n        "                        \
-  "_____|___________________________|_______)______________)\n       |       " \
-  "                                                 |\n       |              " \
-  "                                          |\n       "                       \
-  "|________________________________________________________|\n"
+#    define ASCII_DRILL                                                        \
+        "                      _________\n                     "               \
+        "/~~~~~~~~~\\\n      "                                                 \
+        "              (===========) ______________\n                    |  "  \
+        "||  || "                                                              \
+        "  ||~~~~~~~~~~~~~~|\n                    |  ||  ||   ||        (@)  " \
+        " |\n  "                                                               \
+        "                  |  ||  ||   ||        //    |\n                   " \
+        " |  "                                                                 \
+        "||  ||   ||       //     |\n                    |  ||  ||   "         \
+        "||(@)===(o)   "                                                       \
+        "  |\n                    |  ||  ||   ||        \\\\    |\n          " \
+        "      "                                                               \
+        "    |           ||         \\\\   |\n                    "            \
+        "|~~~~~~~~~~~||   "                                                    \
+        "      (@)  |\n                    |___________||              |\n   " \
+        "      "                                                               \
+        "           (___________)|              |\n                     "      \
+        "(_________) |    @--(o)    |\n                       |     |   (    " \
+        "      "                                                               \
+        "    (\n                       |     |    \\      (o)     \\\n       " \
+        "      "                                                               \
+        "          |     |     \\     /        \\\n                       |  " \
+        "   |  "                                                               \
+        "    \\   @          \\\n                       |_____|       \\     " \
+        "      "                                                               \
+        "   \\\n                       |_____|        \\              \\\n   " \
+        "      "                                                               \
+        "              \\_____/         \\              \\\n                 " \
+        "      "                                                               \
+        "  |/|            \\              \\\n                      )  |/|   " \
+        "      "                                                               \
+        "    \\              \\\n                     (  ,|/|  / '         "   \
+        "\\      "                                                             \
+        "        \\\n                      \\  |/| ( '           \\          " \
+        "    "                                                                 \
+        "\\\n                _____  ) |/|' )         _   \\              "     \
+        "\\\n      "                                                           \
+        "    |    |     |___|/|___________| |   \\              \\\n         " \
+        " "                                                                    \
+        "|====|     |_________________| |    \\              \\\n         =| " \
+        "  _|  "                                                               \
+        "    |_______________|  |     \\              \\\n             |     " \
+        "      "                                                               \
+        "                |      \\              \\\n        "                  \
+        "_____|___________________________|_______)______________)\n       | " \
+        "      "                                                               \
+        "                                                 |\n       |        " \
+        "      "                                                               \
+        "                                          |\n       "                 \
+        "|________________________________________________________|\n"
 
 struct RobotomyRequestForm : AForm {
-public:
-  RobotomyRequestForm(const std::string &target);
-  RobotomyRequestForm(const RobotomyRequestForm &other);
+   public:
+    RobotomyRequestForm(const std::string &target);
+    RobotomyRequestForm(const RobotomyRequestForm &other);
 
-  ~RobotomyRequestForm();
+    ~RobotomyRequestForm();
 
-  const std::string &getTarget() const;
+    const std::string &getTarget() const;
 
-  void execute(const Bureaucrat &bureaucrat) const
-      throw(AForm::GradeTooLowException, AForm::NotSignedException);
+    void execute(const Bureaucrat &bureaucrat) const
+        throw(AForm::GradeTooLowException, AForm::NotSignedException);
 
-private:
-  RobotomyRequestForm();
-  RobotomyRequestForm &operator=(const RobotomyRequestForm &rhs);
+   private:
+    RobotomyRequestForm();
+    RobotomyRequestForm &operator=(const RobotomyRequestForm &rhs);
 
-  const std::string target_;
+    const std::string target_;
 };
 
 #endif
