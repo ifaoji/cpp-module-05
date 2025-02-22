@@ -103,12 +103,11 @@ class RobotomyRequestForm : public AForm {
 
     const std::string &getTarget() const;
 
-    void execute(const Bureaucrat &bureaucrat) const
-        throw(AForm::GradeTooLowException, AForm::NotSignedException);
-
    private:
     RobotomyRequestForm();
     RobotomyRequestForm &operator=(const RobotomyRequestForm &rhs);
+
+    void executeUnchecked(const Bureaucrat &) const;
 
     const std::string target_;
 };

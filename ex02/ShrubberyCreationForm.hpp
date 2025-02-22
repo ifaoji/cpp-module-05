@@ -96,12 +96,11 @@ class ShrubberyCreationForm : public AForm {
 
     const std::string &getTarget() const;
 
-    void execute(const Bureaucrat &bureaucrat) const
-        throw(AForm::GradeTooLowException, AForm::NotSignedException);
-
    private:
     ShrubberyCreationForm();
     ShrubberyCreationForm &operator=(const ShrubberyCreationForm &rhs);
+
+    void executeUnchecked(const Bureaucrat &) const;
 
     const std::string target_;
 };

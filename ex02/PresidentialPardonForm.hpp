@@ -14,12 +14,11 @@ class PresidentialPardonForm : public AForm {
 
     const std::string &getTarget() const;
 
-    void execute(const Bureaucrat &bureaucrat) const
-        throw(AForm::GradeTooLowException, AForm::NotSignedException);
-
    private:
     PresidentialPardonForm();
     PresidentialPardonForm &operator=(const PresidentialPardonForm &rhs);
+
+    void executeUnchecked(const Bureaucrat &) const;
 
     const std::string target_;
 };

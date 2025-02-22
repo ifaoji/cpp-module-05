@@ -1,9 +1,8 @@
-#include "ShrubberyCreationForm.hpp"
-
 #include <cstring>
 #include <fstream>
 
 #include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 ShrubberyCreationForm::ShrubberyCreationForm()
     : AForm("Shrubbery Creation Form", 145, 137), target_("default_target") {
@@ -34,10 +33,7 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(
     return *this;
 }
 
-void ShrubberyCreationForm::execute(const Bureaucrat &executor) const
-    throw(AForm::GradeTooLowException, AForm::NotSignedException) {
-    ensureCanExecute(executor);
-
+void ShrubberyCreationForm::executeUnchecked(const Bureaucrat &) const {
     std::string filename = target_ + "_shrubbery";
 
     // TODO: should it error if the file already exists?

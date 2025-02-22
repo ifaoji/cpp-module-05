@@ -32,10 +32,7 @@ const std::string &PresidentialPardonForm::getTarget() const {
     return target_;
 }
 
-void PresidentialPardonForm::execute(const Bureaucrat &bureaucrat) const
-    throw(AForm::GradeTooLowException, AForm::NotSignedException) {
-    ensureCanExecute(bureaucrat);
-
+void PresidentialPardonForm::executeUnchecked(const Bureaucrat &) const {
     std::cout << target_ << " has been pardoned by Zaphod Beeblebrox."
               << std::endl;
 }

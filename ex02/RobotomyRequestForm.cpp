@@ -37,10 +37,7 @@ bool randomBool() {
     return res;
 }
 
-void RobotomyRequestForm::execute(const Bureaucrat &bureaucrat) const
-    throw(AForm::GradeTooLowException, AForm::NotSignedException) {
-    ensureCanExecute(bureaucrat);
-
+void RobotomyRequestForm::executeUnchecked(const Bureaucrat &) const {
     std::cout << ASCII_DRILL << "[Drilling Noises...]" << std::endl;
 
     for (int i = 0; i < 5; i++) {

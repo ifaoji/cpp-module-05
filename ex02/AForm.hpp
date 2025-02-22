@@ -41,11 +41,9 @@ class AForm {
 
     void beSigned(const Bureaucrat &bureaucrat) throw(
         AForm::GradeTooLowException);
-    void ensureCanExecute(const Bureaucrat &bureaucrat) const
-        throw(AForm::GradeTooLowException, AForm::NotSignedException);
 
-    virtual void execute(const Bureaucrat &bureaucrat) const
-        throw(AForm::GradeTooLowException, AForm::NotSignedException) = 0;
+    void execute(const Bureaucrat &bureaucrat) const
+        throw(AForm::GradeTooLowException, AForm::NotSignedException);
 
    private:
     static const int kMaxGrade = 1;
@@ -55,6 +53,8 @@ class AForm {
     bool              is_signed_;
     const int         required_signing_grade_;
     const int         required_execution_grade_;
+
+    virtual void executeUnchecked(const Bureaucrat &bureaucrat) const = 0;
 
     void validateGrade(int grade) const
         throw(AForm::GradeTooHighException, AForm::GradeTooLowException);

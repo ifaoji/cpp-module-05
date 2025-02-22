@@ -1,5 +1,4 @@
 #include "AForm.hpp"
-
 #include "Bureaucrat.hpp"
 
 const char *AForm::GradeTooHighException::what() const throw() {
@@ -91,7 +90,7 @@ void AForm::beSigned(const Bureaucrat &bureaucrat) throw(
     is_signed_ = true;
 }
 
-void AForm::ensureCanExecute(const Bureaucrat &bureaucrat) const
+void AForm::execute(const Bureaucrat &bureaucrat) const
     throw(AForm::GradeTooLowException, AForm::NotSignedException) {
     bool bureaucrat_powerful_enough =
         bureaucrat.getGrade() <= required_execution_grade_;
@@ -102,6 +101,8 @@ void AForm::ensureCanExecute(const Bureaucrat &bureaucrat) const
     if (!is_signed_) {
         throw AForm::NotSignedException();
     }
+
+    executeUnchecked(bureaucrat);
 }
 
 std::ostream &operator<<(std::ostream &os, const AForm &form) {
