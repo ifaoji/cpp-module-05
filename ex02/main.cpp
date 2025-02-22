@@ -32,7 +32,7 @@ int main() {
         PrintHeader("Shrubbery Not Signed");
 
         Bureaucrat            hubert("Hubert", 1);
-        ShrubberyCreationForm foo("Herbert");
+        ShrubberyCreationForm foo("Herbert_shouldnt_exist");
 
         try {
             foo.execute(hubert);
@@ -44,7 +44,7 @@ int main() {
     {
         PrintHeader("Shrubbery Execute Grade Too Low");
 
-        ShrubberyCreationForm foo("Herbert");
+        ShrubberyCreationForm foo("Herbert_shouldnt_exist");
 
         Bureaucrat signer("Signer", 145);
         foo.beSigned(signer);
