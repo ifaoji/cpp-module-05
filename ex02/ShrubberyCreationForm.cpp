@@ -40,7 +40,7 @@ void ShrubberyCreationForm::executeUnchecked(const Bureaucrat &) const {
     // like should creation be mandatory
     std::ofstream outfile(filename.c_str());
     if (!outfile.is_open()) {
-        std::cerr << "Failed to execute shrubbery form " << getName()
+        std::cout << "Failed to execute shrubbery form " << getName()
                   << ", could not create file " << filename << ": "
                   << strerror(errno) << std::endl;
 
@@ -50,7 +50,7 @@ void ShrubberyCreationForm::executeUnchecked(const Bureaucrat &) const {
     outfile << ASCII_TREES;
     outfile.close();
     if (outfile.fail()) {
-        std::cerr << "Failed to execute shrubbery form " << getName()
+        std::cout << "Failed to execute shrubbery form " << getName()
                   << ", could not write trees to the file " << filename << ": "
                   << strerror(errno) << std::endl;
 
