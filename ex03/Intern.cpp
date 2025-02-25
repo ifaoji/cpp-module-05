@@ -35,6 +35,9 @@ AForm *Intern::makeForm(const std::string &form_name,
     }
 
     if (factory == NULL) {
+        std::cout << "Intern could not create form `" << form_name
+                  << "`, because it does not exist" << std::endl;
+
         return NULL;
     }
 
