@@ -31,7 +31,7 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(
     return *this;
 }
 
-bool randomBool() {
+static bool randomBool() {
     bool res = rand() < (RAND_MAX / 2);
 
     return res;
