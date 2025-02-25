@@ -38,7 +38,7 @@ bool randomBool() {
 }
 
 void RobotomyRequestForm::executeUnchecked(const Bureaucrat &) const {
-    std::cout << ASCII_DRILL << "[Drilling Noises...]" << std::endl;
+    std::cout << "[Drilling Noises...]" << std::endl;
 
     for (int i = 0; i < 5; i++) {
         std::cout << '\a';
