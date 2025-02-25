@@ -32,6 +32,7 @@ AForm *Intern::makeForm(const std::string &form_name,
         }
 
         factory = kNameToForms[i].factory;
+        break;
     }
 
     if (factory == NULL) {
