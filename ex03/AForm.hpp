@@ -24,15 +24,12 @@ class AForm {
         const char *what() const throw();
     };
 
-    AForm();
     AForm(const std::string &name, int required_signing_grade,
           int required_execution_grade) throw(AForm::GradeTooHighException,
                                               AForm::GradeTooLowException);
     AForm(const AForm &other);
 
     virtual ~AForm();
-
-    AForm &operator=(const AForm &rhs);
 
     const std::string &getName() const;
     bool               getIsSigned() const;
@@ -48,6 +45,9 @@ class AForm {
    private:
     static const int kMaxGrade = 1;
     static const int kMinGrade = 150;
+
+    AForm();
+    AForm &operator=(const AForm &rhs);
 
     const std::string name_;
     bool              is_signed_;

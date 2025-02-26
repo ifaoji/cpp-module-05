@@ -19,15 +19,12 @@ class Form {
         const char *what() const throw();
     };
 
-    Form();
     Form(const std::string &name, int required_signing_grade,
          int required_execution_grade) throw(Form::GradeTooHighException,
                                              Form::GradeTooLowException);
     Form(const Form &other);
 
     ~Form();
-
-    Form &operator=(const Form &rhs);
 
     const std::string &getName() const;
     bool               getIsSigned() const;
@@ -40,6 +37,9 @@ class Form {
    private:
     static const int kMaxGrade = 1;
     static const int kMinGrade = 150;
+
+    Form();
+    Form &operator=(const Form &rhs);
 
     const std::string name_;
     bool              is_signed_;

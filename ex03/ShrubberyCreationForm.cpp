@@ -25,8 +25,6 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(
         return *this;
     }
 
-    AForm::operator=(rhs);
-
     // Since `target_` is constant, it cannot be assigned to a new value
     // target_ = rhs.target_;
 
